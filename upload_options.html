@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<style>
+			.xirvik-dlg #directory_cont
+			{
+				width: 100% !important;
+				display: block !important;				
+				height: 29px !important;
+				box-sizing: border-box !important;
+				padding: 0 !important;				
+			}
+			.xirvik-dlg #directory
+			{				
+				width: 100% !important;			
+				display: block !important;
+				height: 100% !important;				
+				box-sizing: border-box !important;
+				margin: 0 !important;
+			}
+			.xirvik-dlg fieldset label#dirlist
+			{
+				padding: 0 !important;
+				margin: 0 !important;
+				margin-top: 10px !important;
+				width: 388px !important;
+				overflow: auto !important;
+				height: 200px !important;
+				display: block !important;
+				box-sizing: border-box !important;
+				border: 1px solid rgb(68, 68, 68) !important;
+				border-radius: 3px !important;
+				background-position: center center !important;
+				background-repeat: no-repeat !important;
+			}
+			.xirvik-dlg fieldset label#dirlist label
+			{
+				box-sizing: border-box !important;
+				display: inline-table !important;
+				min-width: 386px !important;
+				white-space: nowrap !important;
+				border: 1px dotted transparent !important;				
+			}
+			.xirvik-dlg fieldset label#dirlist label.active
+			{
+				background: #DDDDDD !important;
+				border: 1px dotted rgb(68, 68, 68) !important;
+			}
+			.xirvik-dlg fieldset label.checkbox
+			{
+				height: auto !important;
+			}
+		</style>		
+	</head>	
+	<body>
+                <div class='xirvik-dlg'>
+                	<h3 data-i18n='uploading_title'></h3>
+                	<fieldset id='options'>
+				<legend data-i18n='options'></legend>
+				<label class='checkbox'><input type="checkbox" id="not_add_path"></input> <span data-i18n='Dont_add_tname'></span></label>
+				<label class='checkbox'><input type="checkbox" id="torrents_start_stopped"></input> <span data-i18n='upload_without_starting'></span></label>
+				<label class='checkbox'><input type="checkbox" id="fast_resume"></input> <span data-i18n='doFastResume'></span></label>
+			</fieldset>                	
+                	<fieldset id='labels'>
+				<legend data-i18n='labels'></legend>
+				<label><span data-i18n='enter_new_label'></span><input type="text" id="newlabel"></input></label>
+				<label id="existinglabels_cont"><span data-i18n='or_select_existing'></span><select id="existinglabels"><option value='' data-i18n='select_label'></option></select></label>
+			</fieldset>
+                	<fieldset id='directories'>
+				<legend data-i18n='directories'></legend>
+				<label id="directory_cont"><input type="text" id="directory"></input></label>
+				<label id="dirlist">
+				</table>
+			</fieldset>
+			<div class="btn-container">
+				<button class="cancel" data-i18n='cancel'></button>&nbsp;&nbsp;<button class="ok" data-i18n='ok'></button>
+			</div>
+		</div>
+	</body>
+</html>

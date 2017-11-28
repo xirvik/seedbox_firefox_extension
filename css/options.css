@@ -1,0 +1,254 @@
+html, body
+{
+	min-width: 700px;
+	min-height: 600px;	
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	font-family: sans-serif;
+	font-size: 14px;
+}
+
+body
+{
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-webkit-box-sizing: border-box;
+	-moz-user-select: none;
+	margin: 0;
+	padding-left: 10px;
+	padding-right: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;	
+	box-sizing: border-box;
+}
+
+fieldset
+{
+	border-radius: 5px;
+	padding: 3px;
+	margin: 0;
+	border: 1px solid grey;	
+	font-family: sans-serif;
+	font-size: 14px;	
+}
+
+.ui-widget#tabs
+{
+	font-family: sans-serif;
+	font-size: 14px;
+}
+
+label
+{
+	padding-top: 2px;
+	padding-bottom: 2px;	
+	display: block;
+	padding-left: 15px;
+	text-indent: -15px;
+	font-family: sans-serif;
+	font-size: 14px;	
+}
+
+.ui-widget#tabs input 
+{
+        font-family: -webkit-small-control;
+	font-size: 14px;
+	width: 13px;
+	height: 13px;
+	padding: 0;
+	margin:0;
+	vertical-align: bottom;
+	position: relative;
+	top: -1px;
+	padding-top: 2px;	
+	padding-bottom: 2px;
+	margin-right: 2px;
+}
+
+.ui-widget#tabs button, .btn-container button
+{
+	font-family: -webkit-small-control;
+	font-size: 14px;		
+	padding: 5px 10px;
+	margin-top: 0;
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
+.ui-widget#tabs button#save
+{
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 0 !important;	
+}
+
+
+box
+{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-pack: justify;
+	-webkit-box-align: start;
+	-webkit-box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	box-sizing: border-box;
+	padding-left: 5px;
+	padding-right: 5px;	
+}
+
+.center
+{
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 14px;	
+}
+
+#banner
+{
+	width: 332px;
+	height: 43px;
+	margin: 0px auto;
+}
+
+#servers-outer
+{
+	margin-top: 1em;
+	border: 1px solid grey;
+	border-radius: 5px;	
+	height: 180px;
+	width: 79%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#servers
+{
+	font-family: sans-serif;
+	font-size: 12px;
+	width: 100%;
+	cursor: default;
+	overflow: auto;
+	cursor: pointer;	
+}
+
+#servers th
+{
+	background: lightgrey;
+}
+
+#servers th, #servers td
+{
+	text-align: left;
+	font-weight: normal;
+	padding: 3px 5px;
+	overflow: hidden;
+}
+
+#servers tr.current td
+{
+	background-color: #FFF575;
+}
+
+.buttons
+{
+	margin-top: 1em;
+	float: right;
+	width: 20%;
+	text-align: center;
+}
+
+.buttons button
+{
+	display: block;
+	width: 100px;
+	margin: 0px auto;
+}
+
+#call-wizard, #call-parser, #tutorial-here
+{
+	border-bottom: 1px dashed blue;
+	color: blue;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+            /* */
+
+.popup, .wiz_1st, .wiz_2nd, .parser, .selected
+{
+	display: none;
+}
+
+.btn-container
+{
+	float: right;
+	margin-top: 10px;	
+	margin-bottom: 15px;
+}
+
+#entry
+{
+	padding: 15px;
+	font-family: sans-serif;
+	font-size: 14px;	
+}
+
+#entry input, #entry select, .wiz_2nd input, .wiz_1st select
+{
+	-webkit-box-sizing: border-box;
+	padding: 5px;
+	width: 300px;
+	border-radius: 3px;
+	border: 1px solid rgb(68, 68, 68);
+	margin-top: 3px;
+	margin-bottom: 3px;	
+	box-sizing: content-box;
+}
+
+#wizard
+{
+	padding: 0 15px 15px 15px;
+}
+
+.ui-widget#tabs #upload-timeout
+{
+	width: 60px;
+}
+
+#parser_text
+{
+	width: 300px;
+}
+
+#entry .hint
+{
+	display: none;
+	position: absolute;
+	padding: 5px;
+	border: 1px solid rgb(68, 68, 68);
+	width: 200px;
+	box-shadow: rgba(0, 0, 0, 0.498039) 0px 10px 25px;
+	background: white;
+	border-radius: 3px;
+	word-break: normal;
+	word-wrap: break-word;
+}
+
+#entry .hint a
+{
+	color: blue;
+}
+
+#entry .hint a:visited
+{
+	color: blue;
+}
+
+.hint_button
+{
+	width: 22px;
+}

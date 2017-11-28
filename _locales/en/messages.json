@@ -1,0 +1,371 @@
+{
+   "add": {
+      "message": "Add"
+   },
+   "alternatively_you_can": {
+      "message": "Alternatively, you can"
+   },
+   "at_runtime": {
+      "message": "At runtime"
+   },
+   "autoconfiguration_failed": {
+      "message": "Autoconfiguration failed - autoconf service not found."
+   },
+   "autoconfiguration_succeeded": {
+      "message": "Autoconfiguration succeeded, number of clients were setup: "
+   },
+   "bad_credentials": {
+      "message": "Server has rejected your credentials."
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "capture_left_mouse_clicks": {
+      "message": "Capture left mouse clicks on torrent files"
+   },
+   "client": {
+      "message": "Client"
+   },
+   "client_": {
+      "message": "Client:"
+   },
+   "clients_to_be_available": {
+      "message": "Available BitTorrent clients:"
+   },
+   "connection_timeout": {
+      "message": "Connection timeout, in seconds:"
+   },
+   "context_menu_capture": {
+      "message": "Context menu capture:"
+   },
+   "dedicated": {
+      "message": "Dedicated"
+   },
+   "description": {
+      "message": "Description:"
+   },
+   "directories": {
+      "message": "Directories"
+   },
+   "directory_selection": {
+      "message": "Directory selection"
+   },
+   "directory_selection_title": {
+      "message": "Choice type of directory selection for your torrent"
+   },
+   "disabled_for_all_links": {
+      "message": "Disabled for all links"
+   },
+   "done": {
+      "message": "Done"
+   },
+   "download_error": {
+      "message": "There was an error downloading the file."
+   },
+   "download_failure": {
+      "message": "Download failure"
+   },
+   "download_not_torrent": {
+      "message": "Downloaded file is not a torrent."
+   },
+   "download_start": {
+      "message": "Download start"
+   },
+   "edit": {
+      "message": "Edit"
+   },
+   "edit_directories_before": {
+      "message": "Select download directory before uploading the torrent"
+   },
+   "edit_labels_before": {
+      "message": "Edit labels before uploading"
+   },
+   "enter_new_label": {
+      "message": "Enter new label:"
+   },
+   "error": {
+      "message": "Error"
+   },
+   "export_confirm": {
+      "message": "This will access your logins/passwords for torrent sites stored in Firefox and will export them to the selected seedbox.\r\n\r\nProceed?"
+   },
+   "export_success": {
+      "message": "Logins and passwords were successfully exported."
+   },
+   "exporting_to_seedbox_desc": {
+      "message": "You can export your login details from your browser to your seedbox's rutorrent so you don't have to type them manually. If you use this option, a list of supported sites for which you have a password stored in your browser will appear, and you will be able to select which one to export. No info will be sent until you explicitly approve it."
+   },
+   "exporting_to_seedbox_title": {
+      "message": "Exporting to seedbox"
+   },
+   "ext_description": {
+      "message": "This extension adds options to .torrent files to upload them automatically to a number of popular BitTorrent clients."
+   },
+   "ext_name": {
+      "message": "Xirvik .torrent to seedbox uploader"
+   },
+   "ext_short_name": {
+      "message": "Torrent uploader"
+   },
+   "forced_for_all_links": {
+      "message": "Forced for all links (required to support magnet links)"
+   },
+   "full_path_to_the_seedbox": {
+      "message": "Full path to the seedbox, including protocol (http or https), server name, port number and the client path."
+   },
+   "info": {
+      "message": "Info"
+   },
+   "keep_track_of_promo": {
+      "message": "Notify me of new Xirvik products"
+   },
+   "label_selection": {
+      "message": "Label selection"
+   },
+   "label_selection_title": {
+      "message": "Choice type of label selection for your torrent"
+   },
+   "labels": {
+      "message": "Labels"
+   },
+   "max_seedbox_reached": {
+      "message": "You can have a maximum of 20 server records."
+   },
+   "mime_confirmation1": {
+      "message": "Warning: Your Firefox is configured to silently save .torrent files to your hard drive. This means you will not be able to upload them to your seedbox.\r\n\r\nWould you like to change the setting so you are asked what you want to do with torrents files from now on?"
+   },
+   "mime_confirmation2": {
+      "message": "Warning: Your Firefox is configured to pass .torrent files to the external application. This means you will not be able to upload them to your seedbox.\r\n\r\nWould you like to change the setting so you are asked what you want to do with torrents files from now on?"
+   },
+   "new_version": {
+      "message": "New version of Xirvik's seedbox extension is available"
+   },
+   "next": {
+      "message": "Next"
+   },
+   "none": {
+      "message": "None"
+   },
+   "ok": {
+      "message": "Ok"
+   },
+   "only_host_name": {
+      "message": "Only host name of your seedbox. Without protocol, port number and the client path."
+   },
+   "options": {
+      "message": "Options"
+   },
+   "or_select_existing": {
+      "message": "Or select an existing one:"
+   },
+   "other_options": {
+      "message": "Other options:"
+   },
+   "output_debug_messages": {
+      "message": "Output debug messages to console"
+   },
+   "parse": {
+      "message": "Parse"
+   },
+   "parse_welcome": {
+      "message": "Parse welcome e-mail"
+   },
+   "parse_your_welcome": {
+      "message": "parse your welcome e-mail"
+   },
+   "password": {
+      "message": "Password:"
+   },
+   "password_for_the_above": {
+      "message": "Password for the above user name."
+   },
+   "paste_your_xirvik": {
+      "message": "Please paste your Xirvik welcome e-mail below"
+   },
+   "permanent": {
+      "message": "Predefined"
+   },
+   "permanent_directory_title": {
+      "message": "Enter here download directory for your torrent."
+   },
+   "permanent_label_title": {
+      "message": "Enter here label for your torrent."
+   },
+   "progress_messages": {
+      "message": "Progress messages:"
+   },
+   "provide_your_login_details": {
+      "message": "Please provide your login details:"
+   },
+   "remove": {
+      "message": "Remove"
+   },
+   "remove_confirm": {
+      "message": "Are you sure you want to remove this server?"
+   },
+   "request_failed": {
+      "message": "Seedbox error. "
+   },
+   "rutorrent_options_hint": {
+      "message": "html: You may use several macros in predefined mode:\u003Cli>\u003Ca href='#'>{HOST}\u003C/a>\u003C/li>\u003Cli>\u003Ca href='#'>{TRACKER}\u003C/a>\u003C/li>\u003Cli>\u003Ca href='#'>{DATE}\u003C/a>\u003C/li>"
+   },
+   "save": {
+      "message": "Save"
+   },
+   "seedbox_data_found": {
+      "message": "Seedbox data  found in your Xirvik preferences. Overwrite?"
+   },
+   "seedbox_host_name": {
+      "message": "Seedbox host name:"
+   },
+   "seedbox_incorrect_path": {
+      "message": "Seedbox doesn't seem to contain the correct path. Proceed anyway?"
+   },
+   "seedbox_url": {
+      "message": "Seedbox URL:"
+   },
+   "seedbox_url_hint": {
+      "message": "html:URL to access the bittorrent UI you want to upload to.\u003Cbr/>\u003Cbr/>For example, if your server was \u003Cfont color=blue>dedi010.xirvik.com\u003C/font> and you wanted to upload via rutorrent then the URL would be \u003Cfont color=blue>https://dedi010.xirvik.com/rtorrent\u003C/font>.\u003Cbr/>\u003Cbr/>Keep in mind that each provider may use naming schemes different to Xirvik's. Please contact your provider if you have questions about configuring this extension for their service."
+   },
+   "seedboxes_title": {
+      "message": "Choose a seedbox for uploading:"
+   },
+   "select_label": {
+      "message": "-select label-"
+   },
+   "semidedicated": {
+      "message": "Semidedicated"
+   },
+   "server_connection_timeout": {
+      "message": "Server connection timeout"
+   },
+   "server_login_failure": {
+      "message": "Server login failure"
+   },
+   "server_setup_wizard": {
+      "message": "Server setup wizard"
+   },
+   "server_unreacheable": {
+      "message": "Server is unreachable."
+   },
+   "server_wizard": {
+      "message": "the wizard"
+   },
+   "servers": {
+      "message": "Servers"
+   },
+   "servers_response": {
+      "message": "Server's response was: "
+   },
+   "shared": {
+      "message": "Shared"
+   },
+   "starting_torrent_download": {
+      "message": "Starting torrent download."
+   },
+   "starting_torrent_upload": {
+      "message": "Starting torrent upload."
+   },
+   "subscription_type": {
+      "message": "Subscription type:"
+   },
+   "switched_on_for_only": {
+      "message": "Switched on for .torrent files only"
+   },
+   "test": {
+      "message": "Test"
+   },
+   "test_failed": {
+      "message": "Test failed. "
+   },
+   "test_passed": {
+      "message": "Test passed, configuration is correct."
+   },
+   "tflux_not_support": {
+      "message": "Torrentflux doesn't support magnet links."
+   },
+   "timeout_reached": {
+      "message": "Timeout was reached."
+   },
+   "to_create_server_record": {
+      "message": "to add a new Xirvik server."
+   },
+   "to_get_this_info": {
+      "message": "to get this info."
+   },
+   "torrent_clicks_capture": {
+      "message": "Torrent clicks capture:"
+   },
+   "torrent_upload_fail": {
+      "message": "Upload failed."
+   },
+   "torrent_uploaded": {
+      "message": "Torrent has been uploaded successfully."
+   },
+   "type_of_client": {
+      "message": "Type of client this setting uses. Note: it should conform to seedbox URL."
+   },
+   "upload_failure": {
+      "message": "Upload failed"
+   },
+   "upload_options_rutorrent_only": {
+      "message": "Upload options (rutorrent, qbittorent & deluge only):"
+   },
+   "upload_start": {
+      "message": "Upload started"
+   },
+   "upload_success": {
+      "message": "Upload succeeded"
+   },
+   "upload_to": {
+      "message": "Upload to "
+   },
+   "upload_to_seedbox": {
+      "message": "Upload to Xirvik seedbox"
+   },
+   "upload_without_starting": {
+      "message": "Upload without starting the torrent"
+   },
+   "uploading_title": {
+      "message": "Options for uploading"
+   },
+   "url": {
+      "message": "URL"
+   },
+   "user_name_registered": {
+      "message": "User name registered on the server."
+   },
+   "username": {
+      "message": "Username"
+   },
+   "username_": {
+      "message": "Username:"
+   },
+   "you_can_also_use": {
+      "message": "You can use"
+   },
+   "your_description_for": {
+      "message": "Description, comment..."
+   },
+   "Dont_add_tname":  {
+      "message": "Don't add torrent's name to path"
+   },
+   "doFastResume":  {
+      "message": "Fast resume"
+   },
+   "enable":  {
+      "message": "Enable extension"
+   },
+   "you_can_check_tutorial": {
+      "message": "You can check our plugin tutorial "
+   },
+   "tutorial_here": {
+      "message": "here"     
+   },
+   "webui_password": {
+      "message": "WebUI password (default - 'deluge')"
+   },
+   "webui_password_title": {
+      "message": "Enter here password for Deluge WebUI"
+   }
+}

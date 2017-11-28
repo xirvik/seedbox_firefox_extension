@@ -1,0 +1,43 @@
+{
+  "author": "Novik",
+  "applications": {
+    "gecko": {
+      "id": "torrent_uploader@xirvik.com",
+      "strict_min_version": "56.0"
+    }
+   },
+   "background": {
+      "page": "background.html"
+   },
+   "browser_action": {
+      "default_icon": "images/xirvik-16.png",
+      "default_title": "Xirvik"
+   },
+   "content_scripts": [ {
+      "css": [ "css/dialogs.css", "css/ui-lightness/jquery-ui.css", "css/jquery.fancybox.css" ],
+      "js": [ "config.js", "content.js", "util.js", "document_event.js", "jquery.js", "jquery-ui.js", "jquery.fancybox.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_ext_description__",
+   "icons": {
+      "128": "images/xirvik-128.png",
+      "16": "images/xirvik-16.png",
+      "32": "images/xirvik-32.png",
+      "48": "images/xirvik-48.png",
+      "64": "images/xirvik-64.png",
+      "96": "images/xirvik-96.png"
+   },
+   "manifest_version": 2,
+   "minimum_chrome_version": "28.0.0.0",
+   "name": "__MSG_ext_name__",
+   "options_ui": {
+     "page": "options.html",
+     "open_in_tab": true
+   },
+   "permissions": [ "tabs", "contextMenus", "storage", "notifications", "webRequest", "webRequestBlocking", "http://*/*", "https://*/*" ],
+   "short_name": "__MSG_ext_short_name__",
+   "version": "3.6",
+   "web_accessible_resources": [ "upload_options.html", "seedboxes.html", "config.js", "content.js", "util.js", "jquery.js", "jquery-ui.js", "jquery.fancybox.js", "css/*.css", "css/ui-lightness/images/*.png", "images/*.png", "images/*.gif" ]
+}

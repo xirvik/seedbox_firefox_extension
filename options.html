@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>Xirvik Options</title>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="jquery.fancybox.js"></script>
+		<script type="text/javascript" src="jquery-ui.js"></script>
+		<script type="text/javascript" src="config.js"></script>
+		<script type="text/javascript" src="util.js"></script>
+		<script type="text/javascript" src="content.js"></script>		
+		<script type="text/javascript" src="options.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/options.css"></link>
+		<link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui.css"></link>
+		<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css"></link>
+	</head>
+
+	<body class='xirvik-dlg'>
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1" data-i18n='servers'></a></li>
+				<li><a href="#tabs-2" data-i18n='options'></a></li>
+			</ul>
+			<div id="tabs-1">
+				<div id="banner"><a href="https://www.xirvik.com" target="_blank"><img src="images/xirvik.png"></img></a></div>
+				<div class="buttons">
+					<button id="add-server" data-i18n='add'></button>
+					<button id="edit-server" data-i18n='edit'></button>
+					<button id="test-server" data-i18n='test'></button>
+					<button id="remove-server" data-i18n='remove'></button>
+				</div>
+				<div id="servers-outer">
+					<table id="servers">
+						<tr class="header">
+							<th width="50%" data-i18n='url'></th>
+							<th width="25%" data-i18n='username'></th>
+							<th width="25%" data-i18n='client'></th>
+						</tr>
+					</table>
+				</div>
+				<br style="clear: both;" />
+				<div>
+					<span data-i18n='you_can_also_use'></span> <span id="call-wizard" data-i18n='server_wizard'></span> <span data-i18n='to_create_server_record'></span>
+					<span data-i18n='you_can_check_tutorial'></span> <a href="https://wiki.xirvik.com/dokuwiki/doku.php?id=tutorial_en_chromeplugin" target="_blank" id="tutorial-here" data-i18n='tutorial_here'></a>.
+				</div>
+				<br />
+			</div>
+			<div id="tabs-2">
+				<fieldset>
+					<legend data-i18n='torrent_clicks_capture'></legend>
+					<box>
+						<label><input type="checkbox" id="click-capture" /><span data-i18n='capture_left_mouse_clicks'><span></label>
+					</box>
+				</fieldset>
+				<br />
+				<fieldset>
+					<legend data-i18n='context_menu_capture'></legend>
+					<box>
+						<label><input type="radio" name="context-capture" id="context-capture-on"></input><span data-i18n='switched_on_for_only'></span></label>					
+						<label><input type="radio" name="context-capture" id="context-capture-force"></input><span data-i18n='forced_for_all_links'></span></label>
+						<label><input type="radio" name="context-capture" id="context-capture-off"></input><span data-i18n='disabled_for_all_links'></span></label>
+					</box>
+				</fieldset>
+				<br />
+				<fieldset>
+					<legend data-i18n='progress_messages'></legend>
+					<box style="float: right">
+						<label><input type="checkbox" id="progress-messageds" /><span data-i18n='download_start'></span></label>
+						<label><input type="checkbox" id="progress-messagedf" /><span data-i18n='download_failure'></span></label>
+						<label><input type="checkbox" id="progress-messagesf" /><span data-i18n='server_login_failure'></span></label>
+						<label><input type="checkbox" id="progress-messagest" /><span data-i18n='server_connection_timeout'></span></label>
+					</box>
+					<box>
+						<label><input type="checkbox" id="progress-messageus" /><span data-i18n='upload_start'></span></label>
+						<label><input type="checkbox" id="progress-messageuc" /><span data-i18n='upload_success'></span></label>
+						<label><input type="checkbox" id="progress-messageuf" /><span data-i18n='upload_failure'></span></label>
+					</box>
+				</fieldset>
+				<br />
+				<fieldset>
+					<legend data-i18n='upload_options_rutorrent_only'></legend>
+					<box>
+						<label><input type="checkbox" id="upload-nostart" /><span data-i18n='upload_without_starting'></span></label>
+					</box>
+				</fieldset>
+				<br />
+				<fieldset>
+					<legend data-i18n='other_options'></legend>
+					<box>
+						<label><span data-i18n='connection_timeout'></span> <input id="upload-timeout" value="15" type="number" /></label>
+						<label><input type="checkbox" id="console" /><span data-i18n='output_debug_messages'></span></label>
+						<label><input type="checkbox" id="promos" /><span data-i18n='keep_track_of_promo'></span></label>
+						<label><input type="checkbox" id="enabled" /><span data-i18n='enable'></span></label>
+					</box>
+				</fieldset>
+			</div>
+
+			<button id="save" data-i18n='save'></button>
+		</div>
+
+		<div class="popup" id="entry">
+			<div><span data-i18n='seedbox_url'></span><button id="seedbox_url_hint" class="hint_button">?</button></div>
+			<div class="popup hint">
+				<button class="hint_close hint_button">x</button>
+				<span data-i18n='seedbox_url_hint'></span>
+			</div>						
+			<input id="entry_host" type="text" data-i18n-title='full_path_to_the_seedbox'/>
+			<br />
+			<div data-i18n='username_'></div>
+			<input id="entry_user" type="text" data-i18n-title='user_name_registered'/>
+			<br />
+			<div data-i18n='password'></div>
+			<input id="entry_pass" type="password" data-i18n-title='password_for_the_above'/>
+			<br />
+			<div data-i18n='description'></div>
+			<input id="entry_description" type="text" data-i18n-title='your_description_for'/>
+			<br />
+			<div data-i18n='client_'></div>
+			<select id="entry_client" data-i18n-title='type_of_client'>
+				<option value="rutorrent" selected="selected">rutorrent</option>
+				<option value="utorrent">utorrent</option>
+				<option value="torrentflux-b4rt">torrentflux-b4rt</option>
+				<option value="deluge">deluge</option>
+				<option value="qbittorrent">qbittorrent</option>
+			</select>
+			<br /><br />
+			<div id="deluge_options" class="custom_options">
+				<div><span data-i18n='webui_password'></span>:</div>
+				<input id="webui_password" type="password" data-i18n-title='webui_password_title'/>
+			</div>
+			<div id="rutorrent_options" class="custom_options">
+				<div><span data-i18n='label_selection'></span>:<button class="hint_button">?</button></div>
+				<div class="popup hint">
+					<button class="hint_close hint_button">x</button>
+					<span data-i18n='rutorrent_options_hint'></span>
+				</div>
+				<select id="label_selection" data-i18n-title='label_selection_title'>
+					<option value="None" data-i18n='none'></option>
+					<option value="At runtime" selected="selected" data-i18n='at_runtime'></option>
+					<option value="Permanent" data-i18n='permanent'></option>
+				</select><br />
+				<input id="permanent_label" type="text" data-i18n-title='permanent_label_title'/>
+				<div><span data-i18n='directory_selection'></span>:<button class="hint_button">?</button></div>
+				<div class="popup hint">
+					<button class="hint_close hint_button">x</button>
+					<span data-i18n='rutorrent_options_hint'></span>
+				</div>				
+				<select id="directory_selection" data-i18n-title='directory_selection_title'>
+					<option value="None" data-i18n='none'></option>
+					<option value="At runtime" selected="selected" data-i18n='at_runtime'></option>
+					<option value="Permanent" data-i18n='permanent'></option>
+				</select><br />
+				<input id="permanent_directory" type="text" data-i18n-title='permanent_directory_title'/>
+			</div>
+			<div class="btn-container">
+				<button class="cancel" data-i18n='cancel'></button>&nbsp;&nbsp;<button class="save" data-i18n='ok'></button>
+			</div>
+		</div>
+
+		<div class="popup" id="wizard">
+			<h3 data-i18n='server_setup_wizard'></h3>
+			<div class="wiz_1st">
+				<div data-i18n='subscription_type'></div>
+				<select id="wiz_type">
+					<option value="Shared" selected="selected" data-i18n='shared'></option>
+					<option value="Semidedicated" data-i18n='semidedicated'></option>
+					<option value="Dedicated" data-i18n='dedicated'></option>
+				</select>
+				<br />
+				<br />
+				<div>
+					<span data-i18n='clients_to_be_available'></span>
+					<span class="Shared selected">rutorrent</span>
+					<span class="Semidedicated selected">rutorrent</span>
+					<span class="Dedicated selected">rutorrent, utorrent, torrentflux-b4rt and deluge</span>
+                		</div>
+				<div class="btn-container">
+					<button class="cancel" data-i18n='cancel'></button>&nbsp;&nbsp;<button class="wizard_next" data-i18n='next'></button>
+				</div>
+			</div>
+
+			<div class="wiz_2nd">
+				<div data-i18n='provide_your_login_details'></div>
+				<br /><br />
+				<div data-i18n='username_'></div>
+				<input id="wiz_user" type="text" data-i18n-title='user_name_registered'/>
+				<br /><br />
+				<div data-i18n='password'></div>
+				<input id="wiz_pass" type="password" data-i18n-title='password_for_the_above'/>
+				<br /><br />
+				<div data-i18n='seedbox_host_name'></div>
+				<input id="wiz_host" type="text" data-i18n-title='only_host_name'/>
+				<br /><br />
+				<div class="center"><span data-i18n='alternatively_you_can'></span> <span id="call-parser" data-i18n='parse_your_welcome'></span> <span data-i18n='to_get_this_info'></span></div>
+				<br />
+				<div class="btn-container">				
+					<button class="cancel" data-i18n='cancel'></button>&nbsp;&nbsp;<button class="wizard_done" data-i18n='done'></button>
+				</div>					
+			</div>
+
+			<div class="popup" id="parser">
+				<h4 data-i18n='parse_welcome'></h4>
+				<div data-i18n='paste_your_xirvik'></div>
+				<textarea id="parser_text" rows="7" cols="45"></textarea>
+				<br />
+				<br />
+				<div class="btn-container">
+					<button class="cancel" data-i18n='cancel'></button>&nbsp;&nbsp;<button class="parse" data-i18n='parse'></button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
