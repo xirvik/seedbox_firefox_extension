@@ -367,5 +367,20 @@
    },
    "webui_password_title": {
       "message": "Enter here password for Deluge WebUI"
+   },
+   "source_code_available": {
+      "message": "Source code available"
+   },
+   "source_here": {
+      "message": "here"
+   },
+   "to_report_bugs": {
+      "message": "To report bugs, please issue"
+   },
+   "issues-tracker": {
+      "message": "the issue tracker"
+   },
+   "for_support": {
+      "message": "For support, you can email"
    }
 }

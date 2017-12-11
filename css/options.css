@@ -168,15 +168,13 @@ box
 	margin: 0px auto;
 }
 
-#call-wizard, #call-parser, #tutorial-here
+.xirvik-dlg .ui-widget-content .dialog-link,  .dialog-link
 {
 	border-bottom: 1px dashed blue;
 	color: blue;
 	cursor: pointer;
 	text-decoration: none;
 }
-
-            /* */
 
 .popup, .wiz_1st, .wiz_2nd, .parser, .selected
 {
