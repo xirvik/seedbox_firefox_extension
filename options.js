@@ -40,6 +40,10 @@ net.xirvik.seedbox = (function(my)
 			{
 	                	my.options.fill();
                 	});
+                	$(window).on('beforeunload', function()
+                	{
+				return(my.options.closeNotification());
+                	});
 		},
 
 		setButtonState: function()
@@ -202,9 +206,17 @@ net.xirvik.seedbox = (function(my)
 			$(["#context-capture-on", "#context-capture-force", "#context-capture-off"][my.extension.options.capture]).prop("checked", true);
 		},
 
-		save: function()
+		closeNotification: function()
 		{
-			my.extension.options = 
+			if( JSON.stringify(my.extension.options) != JSON.stringify($.extend(true, {}, my.extension.options, my.options.saveOptions())) )
+			{
+				return( my.t('close_notification') );
+			}
+		},
+
+		saveOptions: function()
+		{
+			var options = 
 			{
 				click: $("#click-capture").prop('checked'),
 				messagesf: $("#progress-messagesf").prop('checked'),
@@ -225,12 +237,19 @@ net.xirvik.seedbox = (function(my)
 			};
 			$("#servers tr:not(.header)").each(function()
                 	{
-				my.extension.options.servers.push( $(this).data() );
+				options.servers.push( $(this).data() );
 			});
-			if(!my.isXivikConfiguration(my.extension.options.servers))
-				my.extension.options.promos = true;
+			if(!my.isXivikConfiguration(options.servers))
+				options.promos = true;
+			return(options);
+		},
+
+		save: function()
+		{
+		        my.extension.options = my.options.saveOptions();
 			my.extension.store( function() 
 			{ 
+				$(window).off('beforeunload');
 				if(chrome.runtime.lastError) 
 				{
 					 my.extension.showNotification( my.t('error'), chrome.runtime.lastError.message );

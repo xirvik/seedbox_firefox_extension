@@ -382,5 +382,8 @@
    },
    "for_support": {
       "message": "For support, you can email"
+   },
+   "close_notification": {
+      "message": "Your changes have not been saved yet, if you leave without saving they will be lost"
    }
 }
