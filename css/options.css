@@ -76,13 +76,25 @@ label
 	display: inline-block;
 }
 
-.ui-widget#tabs button#save
+.ui-widget#tabs .actions
 {
 	float: right;
 	margin-top: 10px;
-	margin-bottom: 0 !important;	
+	line-height: 32px;
+	width: 100%;
 }
 
+.ui-widget#tabs .actions #save_indicator
+{
+	float: left;
+	color: #dc3545;
+}
+
+.ui-widget#tabs .actions button#save
+{
+	float: right;
+	margin-bottom: 0 !important;	
+}
 
 box
 {

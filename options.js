@@ -182,6 +182,7 @@ net.xirvik.seedbox = (function(my)
 				$("#promos").prop('checked',true);
 				$("#promos").prop('disabled',true);
 			}
+			my.options.showSaveIndicator();
 		},		
 
 		fill: function()
@@ -200,15 +201,36 @@ net.xirvik.seedbox = (function(my)
 			$("#upload-nostart").prop('checked',my.extension.options.nostart);
 			$("#console").prop('checked',my.extension.options.console);
 			$("#promos").prop('checked',my.isXivikConfiguration() ? my.extension.options.promos : true);
-			this.correctPromo();
 			$("#enabled").prop('checked',my.extension.options.enabled);
 			$("#upload-timeout").val(my.extension.options.timeout);
 			$(["#context-capture-on", "#context-capture-force", "#context-capture-off"][my.extension.options.capture]).prop("checked", true);
+			this.correctPromo();
+			$(".ui-tabs-panel input").on('input', my.options.showSaveIndicator);
+		},
+
+		showSaveIndicator: function()
+		{
+console.log('check');
+			if(my.options.isModified())
+			{
+				$('#save_indicator').text( my.t('unsaved_changes') );
+				$('#save').prop('disabled',false);
+			}
+			else
+			{
+				$('#save_indicator').text( '' );
+				$('#save').prop('disabled',true);
+			}
+		},
+
+		isModified: function()
+		{
+			return(JSON.stringify(my.extension.options) != JSON.stringify($.extend(true, {}, my.extension.options, my.options.saveOptions())));
 		},
 
 		closeNotification: function()
 		{
-			if( JSON.stringify(my.extension.options) != JSON.stringify($.extend(true, {}, my.extension.options, my.options.saveOptions())) )
+			if( my.options.isModified() )
 			{
 				return( my.t('close_notification') );
 			}

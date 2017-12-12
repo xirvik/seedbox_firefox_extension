@@ -385,5 +385,8 @@
    },
    "close_notification": {
       "message": "Your changes have not been saved yet, if you leave without saving they will be lost"
+   },
+   "unsaved_changes": {
+      "message": "There are unsaved changes; they will be lost unless you explicitly save them."
    }
 }
