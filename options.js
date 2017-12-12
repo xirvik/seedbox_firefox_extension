@@ -210,7 +210,6 @@ net.xirvik.seedbox = (function(my)
 
 		showSaveIndicator: function()
 		{
-console.log('check');
 			if(my.options.isModified())
 			{
 				$('#save_indicator').text( my.t('unsaved_changes') );
