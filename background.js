@@ -887,13 +887,28 @@ net.xirvik.seedbox = (function(my)
 			}
 		},
 
+		isSeedboxRelatedURL: function( url )
+		{
+			var ret = false;
+			for(var i = 0; i < my.extension.options.servers.length; i++)
+			{
+				if(url.indexOf(my.extension.options.servers[i].url)==0)
+				{
+					ret = true;
+					break;
+				}
+			}
+			return(ret);
+		},
+
 		torrentHandler: function(details)
 		{
 			if((details.type != "xmlhttprequest") && 
 				(details.tabId>=0) && 
 				my.getOption('click') && 
 				my.extension.options.servers.length &&
-				my.extension.options.enabled)
+				my.extension.options.enabled &&
+				!my.extension.isSeedboxRelatedURL(details.url))
 			{
 	                	var isTorrent = false;
 	                	var tName = details.url.match(/\.torrent$/i);
