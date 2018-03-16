@@ -377,7 +377,7 @@
    "to_report_bugs": {
       "message": "To report bugs, please issue"
    },
-   "issues-tracker": {
+   "issues_tracker": {
       "message": "the issue tracker"
    },
    "for_support": {
