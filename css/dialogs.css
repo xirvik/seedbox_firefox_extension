@@ -1278,7 +1278,7 @@ z-index: auto !important;
 zoom: 1 !important;
 }
 
-.xirvik-dlg fieldset label:not(.checkbox) span
+.xirvik-dlg fieldset label span
 {
 -webkit-animation-delay: 0s !important;
 -webkit-animation-direction: normal !important;
@@ -1534,7 +1534,14 @@ z-index: auto !important;
 zoom: 1 !important;
 }
 
-.xirvik-dlg label:not(.checkbox) input, .xirvik-dlg label select
+.xirvik-dlg fieldset label.checkbox span
+{
+width: auto !important;
+height: auto !important;
+padding: 0;
+}
+
+.xirvik-dlg label input, .xirvik-dlg label select
 {
 -webkit-animation-delay: 0s !important;
 -webkit-animation-direction: normal !important;
@@ -1788,6 +1795,13 @@ word-wrap: normal !important;
 writing-mode: lr-tb !important;
 z-index: auto !important;
 zoom: 1 !important;
+}
+
+.xirvik-dlg label.checkbox input
+{
+width: auto !important;
+height: auto !important;
+-webkit-appearance: checkbox !important;
 }
 
 .xirvik-dlg label select
