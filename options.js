@@ -92,8 +92,8 @@ net.xirvik.seedbox = (function(my)
 		closeHint: function()
 		{
 			$("#entry .hint").hide();
-			$(".fancybox-inner input, .fancybox-inner select").prop("disabled",false);
-			$(".fancybox-inner").css( { background: "#f9f9f9" } );
+			$(".zHSN428b-fancybox-inner input, .zHSN428b-fancybox-inner select").prop("disabled",false);
+			$(".zHSN428b-fancybox-inner").css( { background: "#f9f9f9" } );
 			$.fancybox.update();
 		},
 
@@ -126,8 +126,8 @@ net.xirvik.seedbox = (function(my)
 	                	my.options.closeHint();
                 		$(this).parent().next().css( { left: $(this).position().left-6, top: $(this).position().top-6 } );
 				$(this).parent().next().show();
-				$(".fancybox-inner input, .fancybox-inner select").prop("disabled",true);
-				$(".fancybox-inner").css( { background: "#CCC" } );
+				$(".zHSN428b-fancybox-inner input, .zHSN428b-fancybox-inner select").prop("disabled",true);
+				$(".zHSN428b-fancybox-inner").css( { background: "#CCC" } );
 				$(".hint_close",$(this).parent().next()).off('click').on('click', my.options.closeHint);
 				$.fancybox.update();
                 	});
