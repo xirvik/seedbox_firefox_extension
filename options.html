@@ -93,16 +93,17 @@
 					<box>
 						<label><span data-i18n='connection_timeout'></span> <input id="upload-timeout" value="15" type="number" /></label>
 						<label><input type="checkbox" id="console" /><span data-i18n='output_debug_messages'></span></label>
-						<label><input type="checkbox" id="promos" /><span data-i18n='keep_track_of_promo'></span></label>
 						<label><input type="checkbox" id="enabled" /><span data-i18n='enable'></span></label>
 					</box>
 				</fieldset>
 			</div>
-			<div class='actions'>
-				<span id="save_indicator"></span>
-				<button id="save" data-i18n='save'></button>
-			</div>
 		</div>
+		<div class='actions'>
+			<button id="export" data-i18n='export'></button>
+			<button id="import" data-i18n='import'></button>
+			<span id="save_indicator"></span>
+			<button id="save" data-i18n='save'></button>
+	      	</div>
 
 		<div class="popup" id="entry">
 			<div><span data-i18n='seedbox_url'></span><button id="seedbox_url_hint" class="hint_button">?</button></div>
@@ -162,6 +163,31 @@
 				<button class="cancel" data-i18n='cancel'></button>&nbsp;&nbsp;<button class="save" data-i18n='ok'></button>
 			</div>
 		</div>
+
+		<div class="popup" id="import_dlg">
+			<h3 data-i18n='import_title'></h3>
+			<div data-i18n='import_description'></div>
+			<input id="import_json" type="text" data-i18n-title='export_import_json_title'/>
+			<fieldset>
+				<legend data-i18n='import_type'></legend>
+				<box>
+					<label><input type="radio" name="import-type" id="import-type-override"></input><span data-i18n='import_type_override'></span></label>					
+					<label><input type="radio" name="import-type" id="import-type-append"></input><span data-i18n='import_type_append'></span></label>
+				</box>
+			</fieldset>
+			<div class="btn-container">
+				<button class="cancel" data-i18n='cancel'></button>&nbsp;&nbsp;<button class="save" data-i18n='ok'></button>
+			</div>
+	      	</div>
+
+	      	<div class="popup" id="export_dlg">
+			<h3 data-i18n='export_title'></h3>
+			<div data-i18n='export_description' id='export_description'></div>
+			<input id="export_json" type="text" data-i18n-title='export_import_json_title'/><button class="copy" data-i18n='copy'></button>
+			<div class="btn-container">
+				<button class="cancel" data-i18n='ok'></button>
+			</div>
+	      	</div>
 
 		<div class="popup" id="wizard">
 			<h3 data-i18n='server_setup_wizard'></h3>

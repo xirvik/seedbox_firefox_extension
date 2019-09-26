@@ -116,9 +116,6 @@
    "info": {
       "message": "Info"
    },
-   "keep_track_of_promo": {
-      "message": "Notify me of new Xirvik products"
-   },
    "label_selection": {
       "message": "Label selection"
    },
@@ -388,5 +385,44 @@
    },
    "unsaved_changes": {
       "message": "There are unsaved changes; they will be lost unless you explicitly save them."
+   },
+   "export": {
+      "message": "Export"
+   },
+   "export_description": {
+      "message": "In the input below you have a JSON string with your existing configuration. Keep in mind that this string contains everything including user names and password (visible). Make a copy of it in a safe place to use it in the future to restore the configuration."
+   },
+   "export_title": {
+      "message": "Export configuration"
+   },
+   "copy": {
+      "message": "Copy"
+   },
+   "import": {
+      "message": "Import"
+   },
+   "import_description": {
+      "message": "Paste the configuration JSON string in the input below."
+   },
+   "import_title": {
+      "message": "Import configuration"
+   },
+   "export_import_json_title": {
+      "message": "JSON string with configuration"
+   },
+   "import_type": {
+      "message": "Set of servers from this configuration will"
+   },
+   "import_type_override": {
+      "message": "Overwrite the existing servers"
+   },
+   "import_type_append": {
+      "message": "Be appended to the existing servers"
+   },
+   "import_success": {
+      "message": "Configuration has been successfully imported."
+   },
+   "import_fail": {
+      "message": "Error importing configuration."
    }
 }

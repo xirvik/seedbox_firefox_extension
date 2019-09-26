@@ -66,7 +66,8 @@ label
 	margin-right: 2px;
 }
 
-.ui-widget#tabs button, .btn-container button
+.xirvik-dlg button,
+.btn-container button
 {
 	font-family: -webkit-small-control;
 	font-size: 14px;		
@@ -74,26 +75,23 @@ label
 	margin-top: 0;
 	margin-bottom: 5px;
 	display: inline-block;
+	cursor: pointer;
 }
 
-.ui-widget#tabs .actions
+.xirvik-dlg div.actions
 {
-	float: right;
 	margin-top: 10px;
-	line-height: 32px;
-	width: 100%;
+	margin-bottom: 0 !important;	
 }
 
-.ui-widget#tabs .actions #save_indicator
+.xirvik-dlg div.actions #save_indicator
 {
-	float: left;
 	color: #dc3545;
 }
 
-.ui-widget#tabs .actions button#save
+.xirvik-dlg div.actions button#save
 {
 	float: right;
-	margin-bottom: 0 !important;	
 }
 
 box
@@ -175,12 +173,13 @@ box
 
 .buttons button
 {
-	display: block;
+	display: inline-block;
 	width: 100px;
 	margin: 0px auto;
 }
 
-.xirvik-dlg .ui-widget-content .dialog-link,  .dialog-link
+.xirvik-dlg .ui-widget-content .dialog-link,
+.dialog-link
 {
 	border-bottom: 1px dashed blue;
 	color: blue;
@@ -188,16 +187,20 @@ box
 	text-decoration: none;
 }
 
-.popup, .wiz_1st, .wiz_2nd, .parser, .selected
+.popup, 
+.wiz_1st, 
+.wiz_2nd, 
+.parser, 
+.selected
 {
 	display: none;
 }
 
 .btn-container
 {
-	float: right;
+	text-align: right;
 	margin-top: 10px;	
-	margin-bottom: 15px;
+	width: 100%;
 }
 
 #entry
@@ -207,7 +210,10 @@ box
 	font-size: 14px;	
 }
 
-#entry input, #entry select, .wiz_2nd input, .wiz_1st select
+#entry input, 
+#entry select, 
+.wiz_2nd input, 
+.wiz_1st select
 {
 	-webkit-box-sizing: border-box;
 	padding: 5px;
@@ -219,7 +225,9 @@ box
 	box-sizing: content-box;
 }
 
-#wizard
+#wizard,
+#import_dlg,
+#export_dlg
 {
 	padding: 0 15px 15px 15px;
 }
@@ -258,7 +266,37 @@ box
 	color: blue;
 }
 
-.hint_button
+.xirvik-dlg .hint_button
 {
 	width: 22px;
+	padding: 0;
+	margin: 0;
+}
+
+#export_description
+{
+	width: 410px;
+	margin-bottom: 1em;
+}
+
+#export_copy
+{
+	width: 60px;
+}
+
+#import_json, 
+#export_json
+{
+	width: 350px;
+	padding: 5px;
+	border-radius: 3px;
+	border: 1px solid rgb(68, 68, 68);
+	margin-top: 3px;
+	margin-bottom: 1em;
+	box-sizing: border-box;
+}
+
+#export_json
+{
+	margin-bottom: 0;
 }

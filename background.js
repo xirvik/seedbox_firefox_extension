@@ -344,54 +344,9 @@ net.xirvik.seedbox = (function(my)
 			});			
 		},
 
-		onPromoClick: function()
-		{
-			my.storage.get('promo1', function( promo )
-			{
-				promo = promo || { url: null, clicked: false, modified: null };
-				if(promo.url)
-				{
-					promo.clicked = true;
-					my.storage.put('promo1', promo);
-					chrome.tabs.create({"url" : promo.url});
-				}
-			});
-		},
-
 		isXivikConfiguration: function()
 		{
 			return(my.isXivikConfiguration(my.extension.options.servers));
-		},
-
-		isPromoShow: function()
-		{
-			return( (!my.extension.isXivikConfiguration() || my.getOption("promos")) && my.getOption("enabled") );
-		},
-
-		promoThread: function()
-		{
-			if(my.extension.isPromoShow())
-			{
-				my.storage.get('promo1', function( promo )
-				{
-					var promo = promo || { url: null, clicked: false, modified: null };
-					my.ajax(
-					{
-						url: my.conf.promoURL + "?" + new Date().getTime(),
-						ifModifiedSince: promo.modified,
-
-						success: function( data, req )
-						{
-							var nfo = req.responseText.split('\n');
-							if(nfo.length>=3)
-							{
-								my.storage.put('promo1', { url: my.trim(nfo[2]), clicked: false, modified: req.getResponseHeader("Last-Modified") });
-								my.extension.showNotification( my.trim(nfo[0]), my.trim(nfo[1]), my.trim(nfo[2]), true );
-							}
-						}
-					});
-				});
-			}
 		},
 
 		setOptions: function(options)
@@ -518,7 +473,7 @@ net.xirvik.seedbox = (function(my)
 			}
 		},
 		
-		showNotification: function( theme, text, url, isPromo )
+		showNotification: function( theme, text, url )
 		{
 			chrome.notifications.create(
 			{
@@ -528,15 +483,12 @@ net.xirvik.seedbox = (function(my)
 				iconUrl: chrome.extension.getURL("images/xirvik-32.png")
 			}, function(id)
 			{
-				my.extension.notifications[id] = { promo: isPromo, url: url };
-				if(!isPromo)
-				{ 
-					setTimeout( function()
-					{
-						chrome.notifications.clear(id);
-						delete my.extension.notifications[id];
-					}, my.conf.notificationDelay);
-				}
+				my.extension.notifications[id] = { url: url };
+				setTimeout( function()
+				{
+					chrome.notifications.clear(id);
+					delete my.extension.notifications[id];
+				}, my.conf.notificationDelay);
 			});
 		},
 
@@ -945,15 +897,8 @@ net.xirvik.seedbox = (function(my)
 			if(notification)
 			{
 				chrome.notifications.clear(id);
-				if(notification.promo)
-				{
-					my.extension.onPromoClick();
-				}
-				else
-				{
-					if(notification.url)
-						my.extension.openURL(notification.url);
-				}
+				if(notification.url)
+					my.extension.openURL(notification.url);
 				delete my.extension.notifications[id];
 			}
 		},
@@ -986,7 +931,6 @@ net.xirvik.seedbox = (function(my)
 			my.extension.setupNotifications();
 			my.extension.qBittorrentFilteredURLs = {};
 			browser.browserAction.onClicked.addListener(my.extension.openOptionsPage);
-			setInterval( my.extension.promoThread, my.conf.promoInterval );
 		},
 
 		init: function()

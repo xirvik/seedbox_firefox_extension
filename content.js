@@ -20,6 +20,10 @@ net.xirvik.seedbox = (function(my)
 			chrome.runtime.sendMessage( { type: 'getoptions' }, function(response)
 			{
 				my.extension.options = response;
+				for(var i = 0; i < my.extension.options.servers.length; i++)
+				{
+					delete my.extension.options.servers[i].menu;
+				}
 				my.log("Options was retrieved.");
 				if(callback)
 					callback( my.extension.options );
@@ -31,7 +35,7 @@ net.xirvik.seedbox = (function(my)
 			chrome.runtime.sendMessage( { type: 'setoptions', options: this.options  }, callback );
 		},
 
-		showNotification: function( theme, text, url, isPromo )
+		showNotification: function( theme, text, url )
 		{
 			chrome.runtime.sendMessage( { type: 'notification', theme: theme, text: text, url: url } );
 		}
