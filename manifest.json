@@ -38,6 +38,6 @@
    },
    "permissions": [ "tabs", "contextMenus", "storage", "notifications", "webRequest", "webRequestBlocking", "http://*/*", "https://*/*" ],
    "short_name": "__MSG_ext_short_name__",
-   "version": "3.10",
+   "version": "3.11",
    "web_accessible_resources": [ "upload_options.html", "seedboxes.html", "config.js", "content.js", "util.js", "jquery.js", "jquery-ui.js", "jquery.fancybox.js", "css/*.css", "css/ui-lightness/images/*.png", "images/*.png", "images/*.gif" ]
 }
