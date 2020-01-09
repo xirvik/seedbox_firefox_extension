@@ -95,7 +95,7 @@ net.xirvik.seedbox = (function(my)
 			this.qBittorentSetupFilters(url);
 			my.ajax(
 			{
-				'url': url+'login',
+				'url': url+'api/v2/auth/login',
 				base: server.url,
 				method: 'POST',
 				data: "username="+encodeURIComponent(server.user)+"&password="+encodeURIComponent(server.pass),
@@ -117,16 +117,14 @@ net.xirvik.seedbox = (function(my)
 					if(options.magnet)
 					{
 						formData.append("urls", options.data);
-						path = 'command/download';
 					}
 					else
 					{
 						formData.append("torrents", options.data, options.name);
-						path = 'command/upload';
 					}
 					my.ajax(
 					{
-						'url': url+path,
+						'url': url+'api/v2/torrents/add',
 						base: server.url,
 						method: 'POST',
 						data: formData,
