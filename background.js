@@ -51,37 +51,48 @@ net.xirvik.seedbox = (function(my)
 			});
 		},
 
-		qBittorentGetFilters: function()
+		refererGetFilters: function()
 		{
 			var ret = { urls: [] };
-			for( var i in this.qBittorrentFilteredURLs )
+			for( var i in this.refererFilteredURLs )
 				ret.urls.push( i+'*' );
 			return(ret);
 		},
 
-		qBittorentSetupFilters: function(url)
+		refererSetupFilters: function( serverUrl, refererUrl )
 		{
-			if( !this.qBittorrentFilteredURLs[url] )
+			if( !this.refererFilteredURLs[serverUrl] )
 			{
-				this.qBittorrentFilteredURLs[url] = true;
+				this.refererFilteredURLs[serverUrl] = (refererUrl ? refererUrl : serverUrl);
 				if(chrome.webRequest.onBeforeSendHeaders.hasListener(this.changeReferer))
 					chrome.webRequest.onBeforeSendHeaders.removeListener(this.changeReferer);
-				chrome.webRequest.onBeforeSendHeaders.addListener(this.changeReferer, this.qBittorentGetFilters(),
+				chrome.webRequest.onBeforeSendHeaders.addListener(this.changeReferer, this.refererGetFilters(),
 					["requestHeaders", "blocking"] );
 			}
 		},
 
-		changeReferer: function(details)
+		getRerererUrl: function( details )
 		{
+			if( this.refererFilteredURLs[details.url] )
+			{
+				return(this.refererFilteredURLs[details.url]);
+			}
+			var base = my.basepath(details.url);
+			return( this.refererFilteredURLs[base] ? this.refererFilteredURLs[base] : details.url );
+		},
+
+		changeReferer: function( details )
+		{
+			var refererUrl = my.extension.getRerererUrl( details );
 			details.requestHeaders.push(
 			{
 				name: 'Referer',
-				value: details.url
+				value: refererUrl
 			});
 			details.requestHeaders.push(
 			{
 				name: 'Origin',
-				value: details.url
+				value: my.getOrigin(refererUrl)
 			});
 			return(
 			{
@@ -92,7 +103,7 @@ net.xirvik.seedbox = (function(my)
 		qBittorrentUpload: function( server, options )
 		{
 			var url = my.addslash(server.url);
-			this.qBittorentSetupFilters(url);
+			this.refererSetupFilters(url,url);
 			my.ajax(
 			{
 				'url': url+'api/v2/auth/login',
@@ -383,7 +394,7 @@ net.xirvik.seedbox = (function(my)
 			{
 				chrome.tabs.query( { currentWindow: true, active: true }, function( tabs )
 				{
-					my.extension.transfer( server, { data: e.linkUrl, id: tabs[0].id } );
+					my.extension.transfer( server, { data: e.linkUrl, id: tabs[0].id, referer: tabs[0].url } );
 				});
 			}				
 		},
@@ -461,7 +472,7 @@ net.xirvik.seedbox = (function(my)
 				}
 				case 'loadmagnet':
 				{
-					my.extension.retrieveServer( sender.tab.id, request.url );
+					my.extension.retrieveServer( sender.tab.id, request.url, false );
 					break;				
 				}
 				case 'notification':
@@ -498,6 +509,10 @@ net.xirvik.seedbox = (function(my)
 			{
 				if( my.getOption('messageds') )
 					my.notify('info','starting_torrent_download', server.url);
+				if( options['referer'] )
+				{
+					this.refererSetupFilters( my.basepath(options.data), options['referer'] );
+				}
 				my.ajax(
 				{
 					'url': options.data,
@@ -544,14 +559,14 @@ net.xirvik.seedbox = (function(my)
 			}, server);		
 		},
 		
-		retrieveServer: function( tabId, url )
+		retrieveServer: function( tabId, url, referer )
 		{
 			chrome.tabs.sendMessage(tabId, { type: "dialog", name: "seedboxes" }, function(data)
 			{
 				if(data)
 				{
 					var server = my.extension.options.servers[data.index];
-					my.extension.transfer( server, { data: url, id: tabId } );
+					my.extension.transfer( server, { data: url, id: tabId, referer: referer } );
 				}					
 			});
 		},			
@@ -877,13 +892,15 @@ net.xirvik.seedbox = (function(my)
 						{
 							isTorrent = isTorrent || header.value.match(/\.torrent$/i);
 							break;
-						
 						}
 					}
 				}
 				if(isTorrent)
 				{
-					my.extension.retrieveServer(details.tabId, details.url);
+					chrome.tabs.get(details.tabId, function(tab)
+					{
+						my.extension.retrieveServer(details.tabId, details.url, tab.url);
+					});
 					return( { redirectUrl: 'javascript:void()' } );
 				}
 			}
@@ -927,7 +944,7 @@ net.xirvik.seedbox = (function(my)
 			my.extension.makeMenu();
 			my.extension.setOptions();
 			my.extension.setupNotifications();
-			my.extension.qBittorrentFilteredURLs = {};
+			my.extension.refererFilteredURLs = {};
 			browser.browserAction.onClicked.addListener(my.extension.openOptionsPage);
 		},
 

@@ -101,6 +101,21 @@ net.xirvik.seedbox = (function(my)
 		return(my.addslash(my.fullpath(dir)));
 	};
 
+	my.basepath = function(s)
+	{
+		var arr = s.split('/');
+		var ret = [];
+		for( var i=0; i<arr.length-1; i++ )
+		{
+			if(arr[i]=='.') continue;
+			if(arr[i]=='..')
+				ret.pop();
+			else
+				ret.push(arr[i]);
+		}
+		return(my.addslash(ret.join('/')));
+	};
+
 	my.ajax = function( options )
 	{
 		var xhr = new XMLHttpRequest();
@@ -167,6 +182,12 @@ net.xirvik.seedbox = (function(my)
 		return( (arr && (arr.length>1)) ? arr[1].toString().toLowerCase() : '' );
 	};
 	
+	my.getOrigin = function( url )
+	{
+		var arr = url.match(new RegExp('^http(?:s)?\://([^/:]+)', 'im'));
+		return( (arr && (arr.length>0)) ? arr[0].toString().toLowerCase() : '' );
+	};
+
 	my.standardSuccessHandling = function( dummy, req, url )
 	{
 		var msg = null;
