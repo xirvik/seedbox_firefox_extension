@@ -17,40 +17,6 @@ net.xirvik.seedbox = (function(my)
 			"qbittorrent": 'qBittorrentUpload'
 		},
 
-		ruTorrentUpload: function( server, options )
-		{
-			var formData = new FormData();
-			formData.append("dir_edit", options.directory);
-			formData.append("label", options.label);
-			if(options['torrents_start_stopped'])
-				formData.append("torrents_start_stopped","on");
-			if(options['not_add_path'])
-				formData.append("not_add_path","on");
-			if(options['fast_resume'])
-				formData.append("fast_resume","on");				
-			if(options.magnet)
-				formData.append("url", options.data);
-			else
-			{
-				formData.append("torrent_file", options.data, options.name);
-			}
-			my.ajax(
-			{
-				'url': my.addslash(server.url)+'php/addtorrent.php',
-				base: server.url,
-                        	user: server.user,
-                        	pass: server.pass,
-				method: 'POST',
-				data: formData,
-				success: my.standardSuccessHandling,
-				error: function( status )
-				{
-					if(my.getOption('messageuf'))					
-						my.standardErrorHandling(status,server.url,my.t("torrent_upload_fail"));
-				}
-			});
-		},
-
 		refererGetFilters: function()
 		{
 			var ret = { urls: [] };
@@ -97,6 +63,42 @@ net.xirvik.seedbox = (function(my)
 			return(
 			{
 				requestHeaders: details.requestHeaders
+			});
+		},
+
+		ruTorrentUpload: function( server, options )
+		{
+			var url = my.addslash(server.url);
+			this.refererSetupFilters(url,url);
+			var formData = new FormData();
+			formData.append("dir_edit", options.directory);
+			formData.append("label", options.label);
+			if(options['torrents_start_stopped'])
+				formData.append("torrents_start_stopped","on");
+			if(options['not_add_path'])
+				formData.append("not_add_path","on");
+			if(options['fast_resume'])
+				formData.append("fast_resume","on");				
+			if(options.magnet)
+				formData.append("url", options.data);
+			else
+			{
+				formData.append("torrent_file", options.data, options.name);
+			}
+			my.ajax(
+			{
+				'url': url+'php/addtorrent.php',
+				base: server.url,
+                        	user: server.user,
+                        	pass: server.pass,
+				method: 'POST',
+				data: formData,
+				success: my.standardSuccessHandling,
+				error: function( status )
+				{
+					if(my.getOption('messageuf'))					
+						my.standardErrorHandling(status,server.url,my.t("torrent_upload_fail"));
+				}
 			});
 		},
 
