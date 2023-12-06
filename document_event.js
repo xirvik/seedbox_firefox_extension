@@ -55,28 +55,36 @@ net.xirvik.seedbox = (function(my)
 			else
 			{
 				var timeout = setTimeout( function() { $.fancybox.showLoading(); }, 500 );
-				my.ajax(
+
+				var ajaxResponse = function(request, sender, sendResponse)
+				{
+					if(request.type=='ajax')
+					{
+						clearTimeout(timeout);
+						$.fancybox.hideLoading();
+						if(request.success)
+						{
+							var directory = my.addslash(request.ret.basedir.substr(my.theFileCache.basedir.length));
+							my.theFileCache.entries[directory] = request.ret.dirlist;
+							callback( directory, request.ret.dirlist );
+						}
+						else
+						{
+							if( my.getOption('messagedf') )
+								my.standardErrorHandling(request.ret,my.theFileCache.url);
+						}
+						chrome.runtime.onMessage.removeListener( ajaxResponse );
+					}
+				};
+
+				chrome.runtime.onMessage.addListener( ajaxResponse );
+				chrome.runtime.sendMessage( { type: 'ajax', options:
 				{
 					url: this.url+encodeURIComponent(my.theFileCache.basedir+basedir),
 					base: this.url,
 					user: this.server.user,
 			                pass: this.server.pass,
-					success: function( ret )
-					{
-						clearTimeout(timeout);
-						$.fancybox.hideLoading();
-						var directory = my.addslash(ret.basedir.substr(my.theFileCache.basedir.length));
-						my.theFileCache.entries[directory] = ret.dirlist;
-						callback( directory, ret.dirlist );
-					},
-					error: function(status)
-					{
-						clearTimeout(timeout);					
-						$.fancybox.hideLoading();					
-						if( my.getOption('messagedf') )
-							my.standardErrorHandling(status,my.theFileCache.url);
-					}
-				});
+				} });
 			}
 		}
 	},
@@ -142,7 +150,7 @@ net.xirvik.seedbox = (function(my)
 					        		css: { background: 'none' }
 					        	}
 	    					},
-						beforeShow: function(links, index)
+						beforeShow: function()
         	            			{
 							my.i18n();
                 	    				for( var i in my.extension.options.servers )

@@ -424,5 +424,11 @@
    },
    "import_fail": {
       "message": "Error importing configuration."
+   },
+   "up": {
+      "message": "↑"
+   },
+   "down": {
+      "message": "↓"
    }
 }

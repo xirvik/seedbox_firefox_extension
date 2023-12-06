@@ -53,7 +53,7 @@ net.xirvik.seedbox = (function(my)
 			details.requestHeaders.push(
 			{
 				name: 'Referer',
-				value: refererUrl
+				value: my.getReferer(refererUrl)
 			});
 			details.requestHeaders.push(
 			{
@@ -480,6 +480,26 @@ net.xirvik.seedbox = (function(my)
 				case 'notification':
 				{
 					my.extension.showNotification( request.theme, request.text, request.url );
+					break;
+				}
+				case 'ajax':
+				{
+					my.ajax(
+						my.merge( request.options,
+						{
+							success: function( ret )
+							{
+//								sendResponse( { success: true, ret: ret } );
+								chrome.tabs.sendMessage( sender.tab.id, { type: 'ajax', success: true, ret: ret } );
+							},
+							error: function(status)
+							{
+//								sendResponse( { success: true, ret: status } );
+								chrome.tabs.sendMessage( sender.tab.id, { type: 'ajax', success: false, ret: status } );
+                					}
+						})
+					);
+					break;
 				}
 			}
 		},
@@ -491,7 +511,7 @@ net.xirvik.seedbox = (function(my)
 			 	title: theme,
 				type: "basic",
 				message: text,
-				iconUrl: chrome.extension.getURL("images/xirvik-32.png")
+				iconUrl: chrome.runtime.getURL("images/xirvik-32.png")
 			}, function(id)
 			{
 				my.extension.notifications[id] = { url: url };
@@ -623,9 +643,11 @@ net.xirvik.seedbox = (function(my)
 						modes.push("labels");
 					if( modes.length )
 					{
+						var url = my.addslash(server.url);
+						my.extension.refererSetupFilters(url,url);
 						my.ajax(
 						{
-							'url': my.addslash(server.url)+"plugins/_getdir/info.php?mode="+modes.join(";"),
+							'url': url+"plugins/_getdir/info.php?mode="+modes.join(";"),
 							base: server.url,
                         				user: server.user,
 			                        	pass: server.pass,
@@ -903,7 +925,7 @@ net.xirvik.seedbox = (function(my)
 					{
 						my.extension.retrieveServer(details.tabId, details.url, tab.url);
 					});
-					return( { redirectUrl: 'javascript:void()' } );
+					return( { cancel: true } );
 				}
 			}
 		},

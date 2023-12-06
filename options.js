@@ -36,6 +36,14 @@ net.xirvik.seedbox = (function(my)
                 	{ 
                 		my.options.removeServer(); 
                 	});
+                	$("#up-server").click(function() 
+                	{ 
+                		my.options.upServer(); 
+                	});
+                	$("#down-server").click(function() 
+                	{ 
+                		my.options.downServer(); 
+                	});
 			my.extension.load( function()
 			{
 	                	my.options.fill();
@@ -56,7 +64,13 @@ net.xirvik.seedbox = (function(my)
 
 		setButtonState: function()
 		{
-			$("#edit-server, #test-server, #remove-server").prop('disabled', $("#servers tr.current").length==0);
+			var $current = $("#servers tr.current");
+			$("#edit-server, #test-server, #remove-server, #up-server, #down-server").prop('disabled', $current.length==0);
+			if($current.length)
+			{
+				$("#up-server").prop('disabled', $current.prev().prev().length==0);
+				$("#down-server").prop('disabled', $current.next().length==0);
+			}
 		},
 		
 		setRows: function()
@@ -257,7 +271,8 @@ net.xirvik.seedbox = (function(my)
 				$(window).off('beforeunload');
 				if(chrome.runtime.lastError) 
 				{
-					 my.extension.showNotification( my.t('error'), chrome.runtime.lastError.message );
+					alert(chrome.runtime.lastError.message);
+//					 my.extension.showNotification( my.t('error'), chrome.runtime.lastError.message );
 				}
 				else
 				{
@@ -347,6 +362,20 @@ net.xirvik.seedbox = (function(my)
 			my.options.setButtonState();
 		},
 
+		upServer: function()
+		{
+			var $row = $("#servers tr.current");
+			$row.insertBefore($row.prev());
+			my.options.setButtonState();
+		},
+
+		downServer: function()
+		{
+			var $row = $("#servers tr.current");
+			$row.insertAfter($row.next());
+			my.options.setButtonState();
+		},
+
 		testServer: function()
 		{
 			$.fancybox(
@@ -383,7 +412,8 @@ net.xirvik.seedbox = (function(my)
 				{
 					$.fancybox.hideLoading();
 					$.fancybox.close();
-					my.extension.showNotification( my.t('info'), my.t('test_passed'), server.url );
+					alert(my.t('test_passed'));
+//					my.extension.showNotification( my.t('info'), my.t('test_passed'), server.url );
 				},
 				error: function( status )
 				{
@@ -413,7 +443,8 @@ net.xirvik.seedbox = (function(my)
 							break;
 						}
 					}
-					my.extension.showNotification( my.t('error'), msg, server.url );
+					alert(msg);
+//					my.extension.showNotification( my.t('error'), msg, server.url );
 				}
 			});
 		},

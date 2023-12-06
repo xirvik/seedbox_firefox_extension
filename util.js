@@ -127,7 +127,6 @@ net.xirvik.seedbox = (function(my)
 		}
 		xhr.open(options.method, options.url, true, options.user, options.pass);
 		xhr.withCredentials = true;
-		xhr.setRequestHeader( "Cache-Control", "private, max-age=0, no-cache, no-store, must-revalidate, proxy-revalidate" );
 		xhr.mozBackgroundRequest = true;
 		xhr.timeout = my.getOption('timeout')*1000;
 		for( var hdr in (options.headers || {}) )
@@ -178,14 +177,20 @@ net.xirvik.seedbox = (function(my)
 
 	my.getHost = function( url )
 	{
-		var arr = url.match(new RegExp('^http(?:s)?\://([^/:]+)', 'im'));
+		var arr = url.match(new RegExp('^http(?:s)?\://(?:[^/:]+:[^@]+@)?([^/:]+)', 'im'));
 		return( (arr && (arr.length>1)) ? arr[1].toString().toLowerCase() : '' );
 	};
 	
 	my.getOrigin = function( url )
 	{
-		var arr = url.match(new RegExp('^http(?:s)?\://([^/:]+)', 'im'));
-		return( (arr && (arr.length>0)) ? arr[0].toString().toLowerCase() : '' );
+		var arr = url.match(new RegExp('(^http(?:s)?\://)(?:[^/:]+:[^@]+@)?([^/:]+)', 'im'));
+		return( (arr && (arr.length>2)) ? arr[1].toString().toLowerCase()+arr[2].toString().toLowerCase() : '' );
+	};
+
+	my.getReferer = function( url )
+	{
+		var arr = url.match(new RegExp('(^http(?:s)?\://)(?:[^/:]+:[^@]+@)?(.+)', 'im'));
+		return( (arr && (arr.length>2)) ? arr[1].toString().toLowerCase()+arr[2].toString().toLowerCase() : '' );
 	};
 
 	my.standardSuccessHandling = function( dummy, req, url )
