@@ -136,7 +136,7 @@ net.xirvik.seedbox = (function(my)
 						type: 'ajax',
 						openEffect: 'none',
 						closeEffect: 'none',
-						href: chrome.extension.getURL(request.name+'.html'),
+						href: browser.runtime.getURL(request.name+'.html'),
 						minHeight: 50,
 						width: 400,
 						closeBtn: false,

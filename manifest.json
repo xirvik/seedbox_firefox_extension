@@ -1,9 +1,9 @@
 {
   "author": "Novik",
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "torrent_uploader@xirvik.com",
-      "strict_min_version": "56.0"
+      "strict_min_version": "79.0"
     }
    },
    "background": {
@@ -38,6 +38,6 @@
    },
    "permissions": [ "tabs", "contextMenus", "storage", "notifications", "webRequest", "webRequestBlocking", "http://*/*", "https://*/*" ],
    "short_name": "__MSG_ext_short_name__",
-   "version": "3.16",
+   "version": "3.17",
    "web_accessible_resources": [ "upload_options.html", "seedboxes.html", "config.js", "content.js", "util.js", "jquery.js", "jquery-ui.js", "jquery.fancybox.js", "css/*.css", "css/ui-lightness/images/*.png", "images/*.png", "images/*.gif" ]
 }
